@@ -30,7 +30,7 @@ export default function GoalTracker() {
   } else if (progress < 50) {
     feedback = "Great job! You're under your target.";
   } else if (progress < 80) {
-    feedback = "You're getting awfuly close!";
+    feedback = "You're getting awfully close!";
   } else if (progress < 100) {
     feedback = "Almost there, try to reduce your carbon footprint further!";
   } else {
@@ -38,9 +38,9 @@ export default function GoalTracker() {
   }
 
   return (
-    <>
-      <h2>Goal Tracker</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg mt-6 border border-gray-400">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Goal Tracker</h2>
+      <form onSubmit={handleSubmit} className="space-y-3">
         <input
           type="text"
           placeholder="Set your carbon footprint goal"
@@ -54,14 +54,21 @@ export default function GoalTracker() {
               setError("Invalid input. Please enter a number.");
             }
           }}
+          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
         />
-        <button type="submit">Set Goal</button>
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition w-full mt-2">
+          Set Goal
+        </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {goal !== null && <p>Your Goal: {goal} kg CO₂</p>}
-      <p>Total Emissions: {totalCarbonValue} kg CO₂</p>
-      {goal !== null && <p>Progress: {progress.toFixed(2)}%</p>}
-      <p>{feedback}</p>
-    </>
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      {goal !== null && (
+        <div className="mt-4 p-4 bg-gray-100 rounded-lg text-center">
+          <p className="font-semibold text-gray-700">Your Goal: {goal} kg CO₂</p>
+          <p className="font-semibold text-gray-700">Total Emissions: {totalCarbonValue} kg CO₂</p>
+          <p className="font-semibold text-gray-700">Progress: {progress.toFixed(2)}%</p>
+        </div>
+      )}
+      <p className="mt-4 text-lg font-medium text-gray-700">{feedback}</p>
+    </div>
   );
 }
