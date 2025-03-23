@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 export default function CarbonChart() {
   const context = useContext(CarbonContext);
   if (!context) {
-    throw new Error("CarbonProvider is needed");
+    throw new Error("CarbonProv is needed");
   }
 
   const { activities } = context;

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CarbonContext } from "./CarbonContext";
 
 export default function GoalTracker() {
@@ -21,6 +21,20 @@ export default function GoalTracker() {
   };
 
   const progress = goal ? (totalCarbonValue / goal) * 100 : 0;
+
+  const [achievement, setAchievement] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      setAchievement("🏆 Achievement Unlocked: Goal Surpassed, uh oh");
+    } else if (progress >= 75) {
+      setAchievement("🎯 Achievement Unlocked: 75% of limit has been reached");
+    } else if (progress >= 50) {
+      setAchievement("💪 Achievement Unlocked: Halfway there!");
+    } else {
+      setAchievement(null); 
+    }
+  }, [progress]);
 
   let feedback = "";
   if (goal === null) {
@@ -69,6 +83,15 @@ export default function GoalTracker() {
         </div>
       )}
       <p className="mt-4 text-lg font-medium text-gray-700">{feedback}</p>
+     {achievement && (
+       <p
+         className={`mt-2 font-semibold text-center ${
+           progress >= 100 ? "text-red-600" : "text-green-600"
+         }`}
+       >
+         {achievement}
+       </p>
+     )}
     </div>
   );
 }

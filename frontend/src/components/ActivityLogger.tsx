@@ -6,7 +6,7 @@ export default function ActivityLogger() {
   if (!context) {
     throw new Error("err");
   }
-  const { totalCarbonValue, setTotalCarbonValue, activities, setActivities } = context;
+  const {totalCarbonValue, setTotalCarbonValue, activities, setActivities } = context;
   const [activity, setActivity] = useState("");
   const [category, setCategory] = useState("");
   const [carbonValue, setCarbonValue] = useState<number | "">("");
@@ -84,7 +84,7 @@ export default function ActivityLogger() {
       <ul>
         {activities.map((act, index) => (
           <li key={index}>
-            {act.activity} - {act.category} - {act.carbonValue} CO₂
+            {act.activity} - {act.category} - {act.carbonValue} CO2
           </li>
         ))}
       </ul>
