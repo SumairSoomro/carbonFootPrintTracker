@@ -4,7 +4,7 @@ A simple React app to help users log daily activities, set a carbon goal, and vi
 
 Features
 	•	Activity Logger – Log activities with associated carbon values.
-	•	Goal Tracker – Set and track a carbon emissions goal with real-time progress feedback. Also has gamification elements
+	•	Goal Tracker – Set and track a carbon emissions goal with real-time progress feedback. Also includes gamification elements.
 	•	Carbon Chart – Visual breakdown of emissions per category using bar charts.
 	•	Tips & Resources – Practical tips and links to reduce your carbon footprint.
 
